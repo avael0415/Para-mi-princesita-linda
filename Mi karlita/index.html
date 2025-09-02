@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Karla 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Trebuchet MS', sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+    p {
+      font-size: 1.3em;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    .corazon {
+      position: absolute;
+      color: red;
+      font-size: 2em;
+      animation: flotar 6s linear infinite;
+    }
+    @keyframes flotar {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    iframe {
+      display: none; /* ocultamos el iframe */
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>✨ Ánimo en tu primer día de universidad ✨</h1>
+    <p>
+      Mi Karla hermosa, hoy comienzas un nuevo capítulo en tu vida.  
+      Puede que tengas nervios, pero recuerda que nunca estarás sola:  
+      yo siempre estaré contigo, apoyándote en cada paso.  
+      Estoy orgulloso de ti, de tu esfuerzo, tu valor y tu corazón.  
+      Cree en ti, porque yo siempre creo en ti.  
+      Este es solo el inicio de cosas maravillosas, y yo quiero estar a tu lado en cada una de ellas.  
+      Te amo con todo mi ser, y siempre seré tu apoyo incondicional. ❤️
+    </p>
+
+    <!-- Botón para reproducir la canción -->
+    <button onclick="document.getElementById('musica').play()">🎶 Reproducir música</button>
+
+    <!-- Reproductor de YouTube oculto -->
+    <iframe id="musica" src="https://www.youtube.com/embed/Fy5C-bzi59Q?enablejsapi=1" allow="autoplay"></iframe>
+  </div>
+
+  <script>
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.innerText = "❤️";
+      corazon.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 6000);
+    }
+    setInterval(crearCorazon, 500);
+
+    // Código para reproducir YouTube con API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('musica');
+    }
+
+    document.querySelector("button").addEventListener("click", function(){
+      if(player) player.playVideo();
+    });
+  </script>
+</body>
+</html>
+
 
